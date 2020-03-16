@@ -33,7 +33,7 @@ let decodeRedditPostData = json =>
   Json.Decode.{
     url: json |> field("url", string),
     is_self: json |> field("is_self", bool),
-    media: json |> field("media", bool),
+    media: json |> field("media", Json.Decode.withDefault(Js.Dict.empty(), dict(id))) == Js.Dict.empty(),
   };
 
 let decodeRedditPost = (json): redditPost =>
@@ -58,3 +58,5 @@ let decodeRedditResponse = (json): redditResponse =>
 
 let parseRedditResponse = (json): redditResponse =>
   json |> Json.parseOrRaise |> decodeRedditResponse;
+
+// decodeRedditResponseData in children
