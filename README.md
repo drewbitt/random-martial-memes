@@ -1,6 +1,6 @@
 # Random Martial Memes
 
-Randomly select posts on r/MartialMemes and display their title, image, and top comment.
+Randomly selects recent image posts on r/MartialMemes and display their title, image, and top comment.
 
 ### Why?
 
@@ -8,7 +8,8 @@ Example project with ReasonML.
 
 ### Future Plans
 
-Really I want to generate terrible web novel quotes, but the effort to compile that data sounds annoying.
+* Really I want to generate terrible web novel quotes, but the effort to compile that data sounds annoying.
+* Reddit API no longer easily allows getting all posts in a subreddit, so need to download them.
 
 ## Basic Reason Template
 

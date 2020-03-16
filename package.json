@@ -13,5 +13,10 @@
   "license": "MIT",
   "devDependencies": {
     "bs-platform": "^7.1.1"
+  },
+  "dependencies": {
+    "@glennsl/bs-json": "^5.0.2",
+    "bs-fetch": "^0.5.2",
+    "isomorphic-fetch": "^2.2.1"
   }
 }
