@@ -1,6 +1,4 @@
-[%raw "require('isomorphic-fetch')"]
-
-/* Js.log("Hello, BuckleScript and Reason!"); */
+// [%raw "require('isomorphic-fetch')"]     // only for node / commonjs
 
 let getNewPosts = () : Js.Promise.t(list(Reddit.redditPost)) =>
   Fetch.fetch(Reddit.subredditURL)
@@ -18,18 +16,16 @@ let getRandomRedditPost = () =>
         List.nth(posts, Random.int(List.length(posts))) |> Js.Promise.resolve
     );
 
-let rec getRandomImagePost = () =>
-    getRandomRedditPost() |>
-    Js.Promise.then_((post: Reddit.redditPost) => {
-        if(!post.data.is_self) {
-            Js.log(post.data.url);
+let rec getRandomImagePost = () : Js.Promise.t(ref(string)) =>
+    getRandomRedditPost() |> Js.Promise.then_((post: Reddit.redditPost) => {
+        let data = ref("");
+        if (!post.data.is_self && !post.data.media) {
+            data := post.data.url;
+            Js.Promise.resolve(data);
         }
         else {
             getRandomImagePost();
         }
-        Js.Promise.resolve();
-    })
-    |> Js.Promise.catch(error => error |> Js.log |> Js.Promise.resolve)
-    |> ignore;
+    });
 
-getNewPosts()
+// let getUrl = () => getRandomImagePost() |> Js.Promise.then_(value => {Js.log(value); Js.Promise.resolve();});

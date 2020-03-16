@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <script type="module">
+            import {getRandomImagePost} from "./src/Main.bs.js";
+             
+            let url = await getRandomImagePost();
+            console.log(url);
+            document.getElementById("mainImage").src = url;
+        </script>
+        <img id='mainImage' class="center"/>
+    </body>
+</html>
