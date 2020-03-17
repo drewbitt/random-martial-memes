@@ -6,9 +6,14 @@
         <script type="module">
             import {getRandomImagePost} from "./src/Main.bs.js";
              
-            let url = await getRandomImagePost();
-            console.log(url);
-            document.getElementById("mainImage").src = url;
+            async function displayImage() {
+                let url = await getRandomImagePost();
+                url = url.contents;
+                console.log(url);
+                document.getElementById("mainImage").src = url;
+            }
+
+            displayImage();
         </script>
         <img id='mainImage' class="center"/>
     </body>
