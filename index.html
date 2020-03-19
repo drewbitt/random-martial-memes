@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
     <style>
       body {
-          background-color: #d1cd79;
+        background-color: #d1cd79;
       }
       .center {
         display: block;
@@ -12,25 +12,31 @@
         width: 50%;
       }
       .postButton {
-          margin-top: 10px;
-          text-align: center;
-          width: 10%;
-          margin-left: 45%;
-          margin-right: 45%;
-          height: 4%;
+        margin-top: 10px;
+        text-align: center;
+        width: 10%;
+        margin-left: 45%;
+        margin-right: 45%;
+        height: 4%;
       }
-      h1, h2 {
-          text-align: center;
+      h1,
+      h2 {
+        text-align: center;
       }
     </style>
   </head>
 
   <body>
     <script type="module">
-      import { getRandomImagePost } from "./src/Main.bs.js";
+      import { getRandomImagePost, getNewPosts } from "./src/Main.bs.js";
+
+      async function getPosts() {
+        return await getNewPosts();
+      }
+      window.posts = getPosts();
 
       async function displayImage() {
-        let res = await getRandomImagePost();
+        let res = await getRandomImagePost(posts);
         let url = res.contents.url;
         let title = res.contents.title;
 
@@ -43,6 +49,8 @@
     <h1>Random Martial Meme</h1>
     <h2 id="postTitle"></h2>
     <img id="mainImage" class="center" />
-    <button onclick="displayImage()" title="Random Post" class="postButton">Random Post</button>
+    <button onclick="displayImage()" title="Random Post" class="postButton">
+      Random Post
+    </button>
   </body>
 </html>
