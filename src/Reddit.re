@@ -4,10 +4,11 @@ let subredditName = "MartialMemes";
 let subredditURL =
   "https://www.reddit.com/r/"
   ++ subredditName
-  ++ "/new.json?raw_json=1&sort=new";
+  ++ "/new.json?raw_json=1&sort=new&limit=100";
 
 type redditPostData = {
   url: string,
+  title: string,
   is_self: bool,
   media: bool,
 };
@@ -32,8 +33,12 @@ type redditResponse = {
 let decodeRedditPostData = json =>
   Json.Decode.{
     url: json |> field("url", string),
+    title: json |> field("title", string),
     is_self: json |> field("is_self", bool),
-    media: json |> field("media", Json.Decode.withDefault(Js.Dict.empty(), dict(id))) != Js.Dict.empty(),
+    media:
+      json
+      |> field("media", Json.Decode.withDefault(Js.Dict.empty(), dict(id)))
+      != Js.Dict.empty(),
   };
 
 let decodeRedditPost = (json): redditPost =>
@@ -58,5 +63,3 @@ let decodeRedditResponse = (json): redditResponse =>
 
 let parseRedditResponse = (json): redditResponse =>
   json |> Json.parseOrRaise |> decodeRedditResponse;
-
-// decodeRedditResponseData in children

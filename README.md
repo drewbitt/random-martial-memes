@@ -1,19 +1,16 @@
 # Random Martial Memes
 
-Randomly selects recent image posts on r/MartialMemes and display their title, image, and top comment.
+Randomly selects recent image posts on r/MartialMemes and display their title and image. One line change and this is any subreddit you want.
 
-### Why?
+## Why
 
 Example project with ReasonML.
 
-### Future Plans
+## Future Plans
 
-* Really I want to generate terrible web novel quotes, but the effort to compile that data sounds annoying.
-* Reddit API no longer easily allows getting all posts in a subreddit, so need to download them.
-
-## Basic Reason Template
-
-Hello! This project allows you to quickly get started with Reason and BuckleScript. If you wanted a more sophisticated version, try the `react` template (`bsb -theme react -init .`).
+* Probably none
+* Really I want to generate terrible web novel quotes(including top comments from the young masters on r/MartialMemes), but the effort to compile that data sounds annoying.
+  * Reddit API no longer easily allows getting all posts in a subreddit, so would need to download them ahead of time which is outside the scope of a quick Reason API call demo.
 
 ## Build
 
