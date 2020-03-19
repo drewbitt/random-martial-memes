@@ -40,6 +40,17 @@
         let url = res.contents.url;
         let title = res.contents.title;
 
+        // Only show direct image links, not albums which are HTML
+        // Also why are videos showing? Thought I fixed in API with the media check... Lazy fix here cuz I mentally thought I was done before :)
+        if (
+          url.includes("imgur.com/a/") ||
+          url.includes("youtu.be") ||
+          url.includes("youtube.com") ||
+          url.includes("v.redd.it")
+        ) {
+          displayImage();
+        }
+
         document.getElementById("postTitle").innerText = title;
         document.getElementById("mainImage").src = url;
       }
