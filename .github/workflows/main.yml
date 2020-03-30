@@ -1,4 +1,4 @@
-name: Checks
+name: Pages
 
 on: push
 
@@ -17,7 +17,7 @@ jobs:
           node-version: 10.x
 
       - name: Install and Build
-      - run: | 
+        run: | 
           npm install
           npm run build
           
