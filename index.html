@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        background-color: #d1cd79;
+      }
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+      .postButton {
+        margin-top: 10px;
+        text-align: center;
+        width: 10%;
+        margin-left: 45%;
+        margin-right: 45%;
+        height: 4%;
+      }
+      h1,
+      h2 {
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script type="module">
+      import { getRandomImagePost, getNewPosts } from "./src/Main.bs.js";
+
+      async function getPosts() {
+        return await getNewPosts();
+      }
+      window.posts = getPosts();
+
+      async function displayImage() {
+        let res = await getRandomImagePost(posts);
+        let url = res.contents.url;
+        let title = res.contents.title;
+
+        // Only show direct image links, not albums which are HTML
+        // Also why are videos showing? Thought I fixed in API with the media check... Lazy fix here cuz I mentally thought I was done before :)
+        if (
+          url.includes("imgur.com/a/") ||
+          url.includes("youtu.be") ||
+          url.includes("youtube.com") ||
+          url.includes("v.redd.it")
+        ) {
+          displayImage();
+        }
+
+        document.getElementById("postTitle").innerText = title;
+        document.getElementById("mainImage").src = url;
+      }
+      window.displayImage = displayImage;
+      displayImage();
+    </script>
+    <h1>Random Martial Meme</h1>
+    <h2 id="postTitle"></h2>
+    <img id="mainImage" class="center" />
+    <button onclick="displayImage()" title="Random Post" class="postButton">
+      Random Post
+    </button>
+  </body>
+</html>

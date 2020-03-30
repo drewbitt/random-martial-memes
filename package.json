@@ -1,0 +1,25 @@
+{
+  "name": "random-martial-memes",
+  "homepage": "http://drewbitt.github.io/random-martial-memes",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d ."
+  },
+  "keywords": [
+    "BuckleScript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "bs-platform": "^7.1.1",
+    "gh-pages": "^2.2.0"
+  },
+  "dependencies": {
+    "@glennsl/bs-json": "^5.0.2",
+    "bs-fetch": "^0.5.2"
+  }
+}
