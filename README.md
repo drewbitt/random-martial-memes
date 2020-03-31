@@ -6,6 +6,10 @@ Randomly selects recent image posts on r/MartialMemes and display their title an
 
 Example project with ReasonML.
 
+## Live demo
+
+[Live demo link](https://drewbitt.github.io/random-martial-memes/)
+
 ## Future Plans
 
 * Probably none
@@ -15,20 +19,12 @@ Example project with ReasonML.
 ## Build
 
 ```bash
-# for yarn
-yarn build
-
-# for npm
 npm run build
 ```
 
 ## Build + Watch
 
 ```bash
-# for yarn
-yarn
-
-# for npm
 npm run start
 ```
 
